@@ -4,8 +4,8 @@ const app = express();
 
 // post to second microservice
 app.post('/api', (req, res) => {
-	console.log('request received at', req.url);
-	res.sendStatus(200);
+	const rand = Math.random().toPrecision(8);
+	res.json({ rand: rand });
 });
 
 const PORT = process.env.PORT || 5000;

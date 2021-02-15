@@ -1,13 +1,19 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
-
-// Implement /reverse endpoint
+app.use(bodyParser.json());
 
 app.post('/reverse', (req, res) => {
-	// reverses input
-	console.log('request received at', req.url);
-	res.sendStatus(200);
+	console.log(
+		'received string is: ',
+		JSON.parse(JSON.stringify(req.body.message))
+	);
+	const reversedText = JSON.parse(
+		JSON.stringify(req.body.message).split('').reverse('').join('')
+	);
+	console.log('returning reversed: ', reversedText);
+	res.json({ message: reversedText });
 });
 
 const PORT = process.env.PORT || 6000;
