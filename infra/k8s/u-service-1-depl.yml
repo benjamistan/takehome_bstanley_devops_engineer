@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: u-service-1-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: u-service-1
+  template:
+    metadata:
+      labels:
+        app: u-service-1
+    spec:
+      containers:
+        - name: u-service-1
+          image: benjamistan/u-service-1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: u-service-1-srv
+spec:
+  selector:
+    app: u-service-1
+  ports:
+    - name: u-service-1
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

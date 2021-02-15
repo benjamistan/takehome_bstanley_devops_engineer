@@ -10,9 +10,12 @@ app.post('/api', async (req, res) => {
 		'received string is: ',
 		JSON.parse(JSON.stringify(req.body.message))
 	);
-	const reverseText = await axios.post('http://localhost:6000/reverse', {
-		message: req.body.message,
-	});
+	const reverseText = await axios.post(
+		'http://u-service-2:6000/reverse', // hardcoding the docker bridge network here is a nasty hack! Not for prod, clearly...
+		{
+			message: req.body.message,
+		}
+	);
 
 	console.log('reversed string is: ', reverseText.data.message);
 
