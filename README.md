@@ -15,7 +15,7 @@ The services can be deployed using **Kubernetes** via the `infra/k8s` deployment
 
 # PART 3
 ---
-1. The solution architecture for this simple microservices application at scale could look like below. An **API Gateway** controls usage by clients. This feeds an **Elastic Load Balancer** which distributes API calls to multiple T2 **EC2 instances** hosting u-service-1 **ECS containers** within an **Autoscaling Group**. The u-service-1 microservice calls the u-service-2 microservice, also in an autoscaling group of T2 via request and response **SQS queues**. This will help to ensure maximum scalability and availability of the application as a whole.
+1. The solution architecture for this simple microservices application at scale could look like below as deployed on **AWS**. An **API Gateway** controls usage by clients. This feeds an **Elastic Load Balancer** which distributes API calls to multiple T2 **EC2 instances** hosting u-service-1 **ECS containers** within an **Autoscaling Group**. The u-service-1 microservice calls the u-service-2 microservice, also in an autoscaling group of T2 via request and response **SQS queues**. This will help to ensure maximum scalability and availability of the application as a whole.
 
 ![Solution Architecture](https://sureum-assets.s3.eu-west-2.amazonaws.com/takehome+task+AWS+architecture.png)
 
